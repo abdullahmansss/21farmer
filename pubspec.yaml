@@ -38,6 +38,7 @@ dependencies:
   firebase_messaging: ^6.0.15
   mapbox_gl: ^0.0.5
   rxdart: ^0.18.0
+  fl_chart: ^0.11.0
 
 dev_dependencies:
   flutter_test:
