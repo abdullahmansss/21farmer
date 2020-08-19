@@ -2,6 +2,7 @@ import 'package:farmers21/ui/devices/gateways_screen.dart';
 import 'package:farmers21/ui/farms/bloc/farms_model.dart';
 import 'package:farmers21/ui/field/bloc/field_events.dart';
 import 'package:farmers21/ui/home/home_screen.dart';
+import 'package:farmers21/ui/test_charts/test_charts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -13,15 +14,16 @@ import '../../constants.dart';
 import 'bloc/field_bloc.dart';
 import 'bloc/field_states.dart';
 
-class FieldScreen extends StatefulWidget {
+class FieldScreen extends StatefulWidget
+{
   static const id = 'field';
 
   @override
   _FieldScreenState createState() => _FieldScreenState();
 }
 
-class _FieldScreenState extends State<FieldScreen>
-    with SingleTickerProviderStateMixin {
+class _FieldScreenState extends State<FieldScreen> with SingleTickerProviderStateMixin
+{
   TabController tabController;
   MapboxMapController _controller;
 
@@ -194,8 +196,11 @@ class _FieldScreenState extends State<FieldScreen>
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       padding: EdgeInsets.all(0),
                       color: Colors.blue,
-                      onPressed: () {
-                        //todo
+                      onPressed: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (ctx) => LineChartSample1(),
+                        ));
                       },
                       child: Container(
                         width: double.infinity,
@@ -331,11 +336,61 @@ class _FieldScreenState extends State<FieldScreen>
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Text(
-                value,
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'min',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Text(
+                    value,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'avg',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Text(
+                    value,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'max',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Text(
+                    value,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
               SizedBox(
                 width: 5,
@@ -358,7 +413,7 @@ class _FieldScreenState extends State<FieldScreen>
       actions: <Widget>[
         Center(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               field.crop,
               style: TextStyle(
