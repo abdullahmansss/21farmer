@@ -21,7 +21,7 @@ abstract class FarmsModel with _$FarmsModel {
 abstract class FarmDetailsModel with _$FarmDetailsModel {
   const factory FarmDetailsModel({
   @nullable String status,
-  @nullable String id,
+  @nullable @JsonKey(name : '_id') String id,
   @nullable String name,
   @nullable String user_id,
 }) = _FarmDetailsModel;

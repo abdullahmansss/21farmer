@@ -1,3 +1,6 @@
+import 'package:farmers21/modules/device/cubit/cubit.dart';
+import 'package:farmers21/modules/devices/cubit/cubit.dart';
+import 'package:farmers21/modules/fields/cubit/cubit.dart';
 import 'package:farmers21/modules/home/cubit/cubit.dart';
 import 'package:farmers21/modules/sign_in/cubit/cubit.dart';
 import 'package:farmers21/shared/global/cubit.dart';
@@ -42,6 +45,20 @@ Future init() async
       di<Repository>(),
     ),
   );
+
+  di.registerFactory<FieldsCubit>(
+        () => FieldsCubit(
+      di<Repository>(),
+    ),
+  );
+
+  di.registerFactory<DevicesCubit>(() => DevicesCubit(
+      di<Repository>(),
+    ),);
+
+  di.registerFactory<DeviceReadCubit>(() => DeviceReadCubit(
+      di<Repository>(),
+    ),);
 
   di.registerFactory<GlobalCubit>(
         () => GlobalCubit(),

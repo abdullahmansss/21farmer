@@ -165,7 +165,7 @@ class _$FarmDetailsModelTearOff {
 
   _FarmDetailsModel call(
       {@nullable String status,
-      @nullable String id,
+      @nullable @JsonKey(name: '_id') String id,
       @nullable String name,
       @nullable String user_id}) {
     return _FarmDetailsModel(
@@ -184,6 +184,7 @@ mixin _$FarmDetailsModel {
   @nullable
   String get status;
   @nullable
+  @JsonKey(name: '_id')
   String get id;
   @nullable
   String get name;
@@ -200,7 +201,7 @@ abstract class $FarmDetailsModelCopyWith<$Res> {
       _$FarmDetailsModelCopyWithImpl<$Res>;
   $Res call(
       {@nullable String status,
-      @nullable String id,
+      @nullable @JsonKey(name: '_id') String id,
       @nullable String name,
       @nullable String user_id});
 }
@@ -237,7 +238,7 @@ abstract class _$FarmDetailsModelCopyWith<$Res>
   @override
   $Res call(
       {@nullable String status,
-      @nullable String id,
+      @nullable @JsonKey(name: '_id') String id,
       @nullable String name,
       @nullable String user_id});
 }
@@ -272,7 +273,7 @@ class __$FarmDetailsModelCopyWithImpl<$Res>
 class _$_FarmDetailsModel implements _FarmDetailsModel {
   const _$_FarmDetailsModel(
       {@nullable this.status,
-      @nullable this.id,
+      @nullable @JsonKey(name: '_id') this.id,
       @nullable this.name,
       @nullable this.user_id});
 
@@ -284,6 +285,7 @@ class _$_FarmDetailsModel implements _FarmDetailsModel {
   final String status;
   @override
   @nullable
+  @JsonKey(name: '_id')
   final String id;
   @override
   @nullable
@@ -332,7 +334,7 @@ class _$_FarmDetailsModel implements _FarmDetailsModel {
 abstract class _FarmDetailsModel implements FarmDetailsModel {
   const factory _FarmDetailsModel(
       {@nullable String status,
-      @nullable String id,
+      @nullable @JsonKey(name: '_id') String id,
       @nullable String name,
       @nullable String user_id}) = _$_FarmDetailsModel;
 
@@ -344,6 +346,7 @@ abstract class _FarmDetailsModel implements FarmDetailsModel {
   String get status;
   @override
   @nullable
+  @JsonKey(name: '_id')
   String get id;
   @override
   @nullable

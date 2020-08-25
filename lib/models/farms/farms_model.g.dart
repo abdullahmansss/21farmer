@@ -26,7 +26,7 @@ Map<String, dynamic> _$_$_FarmsModelToJson(_$_FarmsModel instance) =>
 _$_FarmDetailsModel _$_$_FarmDetailsModelFromJson(Map<String, dynamic> json) {
   return _$_FarmDetailsModel(
     status: json['status'] as String,
-    id: json['id'] as String,
+    id: json['_id'] as String,
     name: json['name'] as String,
     user_id: json['user_id'] as String,
   );
@@ -36,7 +36,7 @@ Map<String, dynamic> _$_$_FarmDetailsModelToJson(
         _$_FarmDetailsModel instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'id': instance.id,
+      '_id': instance.id,
       'name': instance.name,
       'user_id': instance.user_id,
     };

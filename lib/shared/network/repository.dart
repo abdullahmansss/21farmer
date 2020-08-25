@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:farmers21/models/Reads/reads_model.dart';
+import 'package:farmers21/models/devices/devices_model.dart';
 import 'package:farmers21/models/farms/farms_model.dart';
+import 'package:farmers21/models/fields/fields_model.dart';
 import 'package:farmers21/models/login/login_model.dart';
 import 'package:farmers21/shared/network/remote/dio_helper.dart';
 import 'package:farmers21/shared/server/errors.dart';
@@ -19,6 +22,24 @@ abstract class Repository
   Future<Either<String, FarmsModel>> getFarms({
     String url,
     String token,
+  });
+
+  Future<Either<String, FieldsModel>> getFields({
+    String url,
+    String token,
+    String id,
+  });
+
+  Future<Either<String, DevicesModel>> getDevices({
+    String url,
+    String token,
+    String id,
+  });
+
+  Future<Either<String, ReadsModel>> getDeviceReads({
+    String url,
+    String token,
+    String id,
   });
 }
 
@@ -72,6 +93,87 @@ class RepoImpl extends Repository
         );
 
         return FarmsModel.fromJson(f);
+      },
+      onServerError: (exception) async {
+        final f = exception.error;
+        print('error is : $f');
+
+        final msg = _handleErrorMessages(f['message']);
+
+        return msg;
+      },
+    );
+  }
+
+  @override
+  Future<Either<String, FieldsModel>> getFields({
+    String url,
+    String token,
+    String id,
+  }) async {
+    return _basicErrorHandling<FieldsModel>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          url + id,
+          token: token,
+          query: null,
+        );
+
+        return FieldsModel.fromJson(f);
+      },
+      onServerError: (exception) async {
+        final f = exception.error;
+        print('error is : $f');
+
+        final msg = _handleErrorMessages(f['message']);
+
+        return msg;
+      },
+    );
+  }
+
+  @override
+  Future<Either<String, DevicesModel>> getDevices({
+    String url,
+    String token,
+    String id,
+  }) async {
+    return _basicErrorHandling<DevicesModel>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          url + id,
+          token: token,
+          query: null,
+        );
+
+        return DevicesModel.fromJson(f);
+      },
+      onServerError: (exception) async {
+        final f = exception.error;
+        print('error is : $f');
+
+        final msg = _handleErrorMessages(f['message']);
+
+        return msg;
+      },
+    );
+  }
+
+  @override
+  Future<Either<String, ReadsModel>> getDeviceReads({
+    String url,
+    String token,
+    String id,
+  }) async {
+    return _basicErrorHandling<ReadsModel>(
+      onSuccess: () async {
+        final f = await dioHelper.get(
+          url + id,
+          token: token,
+          query: null,
+        );
+
+        return ReadsModel.fromJson(f);
       },
       onServerError: (exception) async {
         final f = exception.error;
